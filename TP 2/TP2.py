@@ -15,7 +15,7 @@ v = np.zeros((10, 1))
 for i in range(1,11):
     v[i-1, 0] = np.sin(2**(-i)*np.pi)
 
-#print for the Q1
+###print for the Q1
 #print(v, "\n")
 
 ##question 2
@@ -24,7 +24,7 @@ i = np.arange(1,11)
 i = i.reshape((10,1)) #reshape it to 10x1 to easily execute the formula on each row
 v2 = np.sin(2.0**(-i) * np.pi)
 
-#print for Q2
+###print for Q2
 #print(v2)
 
 #Exercice 1
@@ -39,7 +39,26 @@ ttl_prod = 1
 for x_value in x:
     ttl_prod = ttl_prod * x_value
 
-#print for both question 1 and question 2 (sum and product)
+###print for both question 1 and question 2 (sum and product)
 #print("the total sum of the elements in the vector is: \n",ttl_sum, "\n","the total product of the elements of the vector is: \n",ttl_prod)
 
-print(np.sum(x)," \n", np.prod(x))
+###verifying the results with the use of numpy after executing we can notice we get the same values as the loops
+#print(np.sum(x)," \n", np.prod(x)) 
+
+
+#Exercice 2
+x1 = np.arange(0, 41, 4)
+
+#question 1
+n = len(x1)
+#make a new vector to place the results after running the formula on it
+xf = np.zeros(n)
+for i in range(n):
+    xf[i] = 3*x1[i]**2+2*x1[i]-1
+
+#no loop
+xf1 =3*x1**2+2*x1-1
+
+###print("with loop:", xf)
+###print("without loop:", xf1)
+###print("same values => ", np.allclose(xf, xf1))
