@@ -52,13 +52,77 @@ x1 = np.arange(0, 41, 4)
 #question 1
 n = len(x1)
 #make a new vector to place the results after running the formula on it
-xf = np.zeros(n)
+y = np.zeros(n)
 for i in range(n):
-    xf[i] = 3*x1[i]**2+2*x1[i]-1
+    y[i] = 3*x1[i]**2+2*x1[i]-1
 
 #no loop
-xf1 =3*x1**2+2*x1-1
+yf =3*x1**2+2*x1-1
 
-###print("with loop:", xf)
-###print("without loop:", xf1)
-###print("same values => ", np.allclose(xf, xf1))
+###print("with loop:", y)
+###print("without loop:", yf)
+###print("same values -> ", np.allclose(y, yf))
+
+#question 2
+z = np.zeros((n-2))
+for i in range(n-2):
+    z[i] = y[i]+y[i+1]+y[i+2]
+
+###print(z)
+
+#question 3
+f = np.zeros((len(z)))
+for i in range(n-2):
+    f[i] = abs(z[i])
+
+###print(f)
+
+#question 4
+g = np.zeros((len(z)))
+for i in range(n-2):
+    g[i] = np.log(abs(z[i]))
+
+###print(g)
+
+
+###question 5
+rng = np.random.default_rng(0)
+A = rng.uniform(size=(3, 4))
+A_og = A.copy()
+
+#print(A, "\n", A_og) #to check if it works
+for i in range(3):
+    for j in range(4):
+        if A[i,j] < 0.2:
+            A[i,j] = 0
+        else:
+            A[i,j] = 1
+
+v = (A_og >= 0.2).astype(int)
+###print(A)
+###print("result verification: \n", np.array_equal(A, v))
+
+#Exercice 3
+import numpy as np
+X = np.arange(1, 11)
+Y = np.array([3, 1, 5, 6, 8, 2, 9, 4, 7, 0])
+
+#gives True if the value in x in is inbetween 3 and 8 (excluding 3 and 8)
+#print((X > 3) & (X < 8))
+
+#get all the values that are above 5
+#print(X[X > 5])
+
+#get the values of y at positions where x <= 4
+#print(Y[X <= 4])
+
+#get values of x below 2 or equal/above 8
+#print(X[(X < 2) | (X >= 8)])
+
+#get values of y at those position in respect to the boolean demand
+#print(Y[(X < 2) | (X >= 8)])
+
+#trying to select values of x if y is negative
+#print(X[Y < 0])
+
+
