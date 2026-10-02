@@ -98,9 +98,9 @@ for i in range(3):
         else:
             A[i,j] = 1
 
-v = (A_og >= 0.2).astype(int)
+V  = (A_og >= 0.2).astype(int)
 ###print(A)
-###print("result verification: \n", np.array_equal(A, v))
+###print("result verification: \n", np.array_equal(A, V))
 
 #Exercice 3
 import numpy as np
