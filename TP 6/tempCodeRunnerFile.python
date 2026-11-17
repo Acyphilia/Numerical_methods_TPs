@@ -1,0 +1,17 @@
+import numpy as np
+
+# Generate the observations once
+n = 8000
+rng = np.random.default_rng(1)
+z = rng.standard_normal(n)
+
+y = 2*z + 10**9
+
+# Estimate the variance using the given formula
+variance_y = (np.sum(y**2) - (1/n)*np.sum(y)**2) / (n - 1)
+
+# Relative deviation from the theoretical variance of 4
+relative_error = abs(variance_y - 4) / 4
+
+print("Estimated variance:", variance_y)
+print("Relative deviation:", relative_error)
