@@ -95,5 +95,38 @@ for i in range(m):
 D = np.mean(wait_time)
 C6 = 100 * 21 / D
 
-print(f"average days until inspection: {D}")
-print(f"estimated monthly cost: {C6}CHF")
+#print(f"average days until inspection: {D}")
+#print(f"estimated monthly cost: {C6}CHF")
+
+#=====question 7=====
+
+p7 = 0.05
+m7 = 10**4
+p0 = None
+
+while p7 > 0:
+    wait_time = np.zeros(m7, dtype=int)
+
+    for i in range(m7):
+        wait_time[i] = daysUntilChecked(p7)
+
+    D = np.mean(wait_time)
+    C7 = 100 * 21 / D
+
+    print(f"p = {p7}")
+    print(f"average days = {D}")
+    print(f"Cost = {C7}CHF")
+
+    if C7 < 45:
+        p0 = p7
+        break
+
+    p7 = round(p7 - 0.002, 3)
+
+if p0 is not None:
+    expected_inspections = 70 * p0
+
+    print(f"\nselected probability: {p0}")
+    print(f"expected inspections in 70 days: {expected_inspections}")
+else:
+    print("no positive tested probability")
